@@ -6,6 +6,10 @@ import { useForm } from "react-hook-form";
 export default function Home() {
   const { register, handleSubmit } = useForm();
 
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +23,7 @@ export default function Home() {
 
       <div>Hello</div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" />
+        <input {...register("body", { required: true })} />
         <button type="submit">Submit</button>
       </form>
     </div>
