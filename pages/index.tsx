@@ -1,14 +1,54 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "./index.module.scss";
 import { useForm } from "react-hook-form";
+import styled from "@emotion/styled";
+import { css } from "@emotion/css";
 
 import { PrismaClient, PrismaPromise, Tweet } from "@prisma/client";
 
 import TweetForm from "../components/tweet-form";
 import Timeline from "../components/timeline";
+import StarSvg from "../components/svg/star";
 
 import { GetServerSideProps } from "next";
+
+const borderColor = `rgb(47, 51, 54)`;
+const twitterBlue = `#1da1f2`;
+
+const MainContainer = styled("div")`
+  max-width: 600px;
+  margin: 0 auto;
+  border-color: ${borderColor};
+  border-style: solid;
+  border-width: 0 1px 0 1px;
+`;
+
+const HeaderContainer = styled("div")`
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid ${borderColor};
+`;
+
+const Header = styled("h1")`
+  line-height: 53px;
+  font-size: inherit;
+`;
+
+const SVGContainer = styled("div")`
+  width: 22px;
+  height: 22px;
+`;
+
+const Divider = styled("div")`
+  height: 12px;
+  background-color: rgb(21, 24, 28);
+  border-bottom: 1px solid ${borderColor};
+`;
 
 interface ITweets extends GetServerSideProps {
   tweets: Tweet[];
@@ -31,11 +71,6 @@ export async function getServerSideProps() {
   };
 }
 
-type JSONResponse = {
-  body?: string;
-  data?: string;
-};
-
 async function saveTweet(data: string) {
   await fetch("/api/tweet", {
     method: "POST",
@@ -44,8 +79,6 @@ async function saveTweet(data: string) {
 }
 
 export default function Home({ tweets }: ITweets) {
-  const { register, handleSubmit } = useForm();
-
   const onSubmit = async (data: any) => {
     try {
       saveTweet(data);
@@ -67,12 +100,25 @@ export default function Home({ tweets }: ITweets) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <div>Hello</div>
-      <TweetForm onSubmit={onSubmit} />
-      {tweets?.map(data => (
-        <Timeline key={data.id} {...data} />
-      ))}
+      <MainContainer>
+        <HeaderContainer>
+          <Header>Home</Header>
+          <SVGContainer
+            className={css`
+              svg {
+                fill: ${twitterBlue};
+              }
+            `}
+          >
+            <StarSvg />
+          </SVGContainer>
+        </HeaderContainer>
+        <TweetForm onSubmit={onSubmit} />
+        <Divider />
+        {tweets?.map(data => (
+          <Timeline key={data.id} {...data} />
+        ))}
+      </MainContainer>
     </div>
   );
 }
