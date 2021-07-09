@@ -93,8 +93,7 @@ export default function Home({ tweets }: ITweets) {
       await saveTweet(data);
       // when we recieve a new message reload
       // helps optimistic ui updates
-      // window.location.reload();
-      e.target.onreset;
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
