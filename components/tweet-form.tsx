@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/css";
 
 const profilePic =
-  "https://pbs.twimg.com/profile_images/1220746647484813312/Lcg3Mww5_x96.jpg";
+  "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg";
 const twitterBlue = `#1da1f2`;
 const borderColor = `rgb(47, 51, 54)`;
 
