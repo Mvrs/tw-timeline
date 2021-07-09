@@ -3,7 +3,7 @@
 <h1 align="center">tw-timeline</h1>
 
 <div align="center">
-   Something I built to see whats the hype for Prisma all about 😎
+   Something I built to see what's the hype for Prisma 😎
 </div>
 
 <br>
@@ -23,9 +23,7 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/5723692/103759063-f60c0080-4fc7-11eb-8dc2-6a6c206c5022.png)
-
-This was my first attempt diving into NextJs.
+![screenshot](https://user-images.githubusercontent.com/5723692/125141660-82f45b80-e0ca-11eb-8a15-38a9bca1b58a.png)
 
 ### Built With
 
@@ -55,13 +53,13 @@ This was my first attempt diving into NextJs.
 
 ### Milestone 2
 
-- [] Change Theme from Dark to Light
-- [] Create and Store Users
-- [] Setup OAuth to enable Authentication
-- [] Allow Users to remain anonymous
-- [] Allow Users to tweet GIFs and Photos
-- [] Everyone can create their own AVIs
-- [] React Query for an optimistic UI experience
+- [ ] Change Theme from Dark to Light
+- [ ] Create and Store Users
+- [ ] Setup OAuth to enable Authentication
+- [ ] Allow Users to remain anonymous
+- [ ] Allow Users to tweet GIFs and Photos
+- [ ] Everyone can create their own AVIs
+- [ ] React Query for an optimistic UI experience
 
 ## How To Use
 
