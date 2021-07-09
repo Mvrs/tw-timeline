@@ -72,19 +72,29 @@ export async function getServerSideProps() {
 }
 
 async function saveTweet(data: string) {
-  await fetch("/api/tweet", {
+  const response = await fetch("/api/tweet", {
     method: "POST",
     body: JSON.stringify(data),
   });
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
 }
 
 export default function Home({ tweets }: ITweets) {
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (
+    data: any,
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     try {
       await saveTweet(data);
       // when we recieve a new message reload
       // helps optimistic ui updates
-      window.location.reload();
+      // window.location.reload();
+      e.target.onreset;
     } catch (err) {
       console.log(err);
     }
