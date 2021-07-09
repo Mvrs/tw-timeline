@@ -9,3 +9,9 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Tweet {
+  id        String   @id @default(cuid())
+  body      String
+  createdAt DateTime @default(now())
+}
