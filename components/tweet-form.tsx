@@ -37,7 +37,7 @@ const ButtonWrapper = styled("div")`
 `;
 
 export default function TweetForm({ onSubmit }: any): JSX.Element {
-  const { register, handleSubmit } = useForm({ mode: "onChange" });
+  const { register, handleSubmit, formState } = useForm({ mode: "onChange" });
   return (
     <Box>
       <ColumnLeft>
@@ -63,6 +63,9 @@ export default function TweetForm({ onSubmit }: any): JSX.Element {
           />
           <ButtonWrapper>
             <button
+              disabled={
+                !formState.isDirty || (formState.isDirty && !formState.isValid)
+              }
               className={css`
                 color: white;
                 background-color: ${twitterBlue};
@@ -74,6 +77,9 @@ export default function TweetForm({ onSubmit }: any): JSX.Element {
                 line-height: 38px;
                 border-radius: 19px;
                 cursor: pointer;
+                :disabled {
+                  opacity: 0.5;
+                }
               `}
               type="submit"
             >
