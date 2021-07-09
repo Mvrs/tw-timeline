@@ -81,7 +81,7 @@ async function saveTweet(data: string) {
 export default function Home({ tweets }: ITweets) {
   const onSubmit = async (data: any) => {
     try {
-      saveTweet(data);
+      await saveTweet(data);
       // when we recieve a new message reload
       // helps optimistic ui updates
       window.location.reload();

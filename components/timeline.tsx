@@ -1,5 +1,4 @@
 import { Tweet } from "@prisma/client";
-import styles from "./timeline.module.scss";
 
 import styled from "@emotion/styled";
 import { css } from "@emotion/css";
@@ -8,6 +7,26 @@ const profilePic =
   "https://pbs.twimg.com/profile_images/1220746647484813312/Lcg3Mww5_x96.jpg";
 const twitterBlue = `#1da1f2`;
 const borderColor = `rgb(47, 51, 54)`;
+
+const convertTime = (timestamp: string) => {
+  const date = new Date(timestamp);
+  const now = new Date();
+
+  // @ts-ignore
+  let timeDifference = Math.floor((now - date) / 1000 / 60);
+  if (timeDifference < 60) {
+    return `${timeDifference} mins`;
+  } else if (timeDifference < 24 * 60) {
+    return `${Math.floor(timeDifference / 60)}h`;
+    // greater than 24hrs
+  } else {
+    return date.toLocaleString("en-US", {
+      month: "short",
+      hour12: true,
+      day: "numeric",
+    });
+  }
+};
 
 const Box = styled("div")`
   padding: 12px 16px;
@@ -64,9 +83,8 @@ export default function Timeline({ createdAt, body }: Tweet) {
           <InfoName>Anonymous</InfoName>
           <InfoUserName>@soanonymous</InfoUserName>
           <Dot>•</Dot>
-          <InfoDate key={body.indexOf(body)}>
-            {new Date(createdAt).toLocaleString("en-US", { hour12: true })}{" "}
-          </InfoDate>
+          {/* @ts-ignore */}
+          <InfoDate key={body.indexOf(body)}>{convertTime(createdAt)}</InfoDate>
         </InfoWrapper>
         {body}
       </ColumnRight>

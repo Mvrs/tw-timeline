@@ -37,7 +37,7 @@ const ButtonWrapper = styled("div")`
 `;
 
 export default function TweetForm({ onSubmit }: any): JSX.Element {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({ mode: "onChange" });
   return (
     <Box>
       <ColumnLeft>
@@ -51,6 +51,7 @@ export default function TweetForm({ onSubmit }: any): JSX.Element {
           <input
             className={css`
               background-color: black;
+              color: white;
               outline: none;
               border: none;
               width: 100%;
@@ -72,6 +73,7 @@ export default function TweetForm({ onSubmit }: any): JSX.Element {
                 padding: 0 16px;
                 line-height: 38px;
                 border-radius: 19px;
+                cursor: pointer;
               `}
               type="submit"
             >
