@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel-build": "prisma migrate deploy"
   },
   "dependencies": {
     "@emotion/css": "^11.1.3",
